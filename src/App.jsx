@@ -5,6 +5,7 @@ import { useClock } from "./hooks/useClock";
 import { useProgress } from "./hooks/useProgress";
 import { useWindows } from "./hooks/useWindows";
 import { useRecentTopics } from "./hooks/useRecentTopics";
+import { Analytics } from "@vercel/analytics/react";
 
 import Wallpaper from "./components/Wallpaper/Wallpaper";
 import MenuBar from "./components/MenuBar/MenuBar";
@@ -108,6 +109,7 @@ export default function App() {
           <Footer /> {/* ✅ EXACTLY BELOW HINT */}
         </div>
       )}
+      <Analytics />
     </div>
   );
 }
