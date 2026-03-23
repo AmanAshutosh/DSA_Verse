@@ -1,0 +1,66 @@
+/* ── MenuBar ────────────────────────────────────────────────── */
+
+.menubar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 28px;
+  z-index: var(--z-menubar);
+
+  /* Frosted-glass effect */
+  background: rgba(20, 20, 22, 0.72);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+
+  border-bottom: 1px solid var(--border-subtle);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+
+  /* Prevent accidental text selection on click */
+  user-select: none;
+}
+
+/* ── Left section ── */
+.menubar__left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.menubar__apple {
+  font-size: 16px;
+  color: #fff;
+}
+
+.menubar__item {
+  font-size: 12.5px;
+  font-weight: 400;
+  color: var(--text-primary);
+  cursor: default;
+}
+
+.menubar__item--bold {
+  font-weight: 600;
+}
+
+/* ── Right section ── */
+.menubar__right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.menubar__date {
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.menubar__time {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.95);
+}

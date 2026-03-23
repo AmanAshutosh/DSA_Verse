@@ -1,0 +1,87 @@
+/* ── TopicIcon ───────────────────────────────────────────────── */
+
+.topic-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+
+  /* Smooth lift-and-scale on hover */
+  transform: scale(1) translateY(0);
+  transition: transform var(--transition-normal);
+}
+
+.topic-icon--hovered {
+  transform: scale(1.08) translateY(-2px);
+}
+
+/* ── Icon wrapper ── */
+/* Contains the SVG ring, the coloured box, and the dot */
+.topic-icon__wrapper {
+  position: relative;
+  width: 76px;
+  height: 76px;
+}
+
+/* SVG ring sits behind the icon box */
+.topic-icon__ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* Rotate so the arc starts at the top (12 o'clock) */
+  transform: rotate(-90deg);
+  pointer-events: none;
+}
+
+/* Coloured rounded-square icon */
+.topic-icon__box {
+  position: absolute;
+  /* 6 px inset on all sides inside the 76px wrapper */
+  inset: 6px;
+  border-radius: var(--radius-icon);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.topic-icon__emoji {
+  font-size: 26px;
+  line-height: 1;
+}
+
+/* Small dot shown below icon when window is open */
+.topic-icon__dot {
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+/* ── Label ── */
+.topic-icon__label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.topic-icon__name {
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+  max-width: 80px;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.topic-icon__progress {
+  font-size: 10px;
+  color: var(--text-muted);
+}

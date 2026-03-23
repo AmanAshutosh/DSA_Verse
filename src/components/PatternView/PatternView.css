@@ -1,0 +1,149 @@
+/* ── PatternView ─────────────────────────────────────────────── */
+
+/* Fills its parent (the right panel of the window) */
+.pattern-view {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ── Header ── */
+.pattern-view__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px 12px;
+  flex-shrink: 0;           /* Never compress the header */
+}
+
+.pattern-view__title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+}
+
+/* Mark Complete / Completed toggle button */
+.pattern-view__complete-btn {
+  padding: 5px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-hover);
+  color: var(--text-secondary);
+  transition: background var(--transition-normal),
+              color var(--transition-normal),
+              border-color var(--transition-normal);
+}
+
+/* Green "done" state */
+.pattern-view__complete-btn--done {
+  background: rgba(48, 209, 88, 0.18);
+  color: var(--color-easy);
+  border-color: var(--color-easy);
+}
+
+/* ── Tabs ── */
+.pattern-view__tabs {
+  display: flex;
+  gap: 4px;
+  padding: 0 20px;
+  border-bottom: 1px solid var(--border-subtle);
+  flex-shrink: 0;
+}
+
+.pattern-view__tab {
+  padding: 7px 16px;
+  font-size: 12.5px;
+  font-weight: 400;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;    /* Overlap the border-bottom of the tabs container */
+  cursor: pointer;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.pattern-view__tab--active {
+  font-weight: 600;
+  color: #fff;
+  border-bottom-color: #0A84FF;
+}
+
+/* ── Scrollable content area ── */
+.pattern-view__content {
+  flex: 1;
+  overflow: auto;
+  padding: 16px 20px;
+}
+
+/* ── Theory tab ── */
+.pattern-view__para {
+  margin: 0 0 10px;
+  line-height: 1.75;
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.pattern-view__para--bullet {
+  color: rgba(255, 255, 255, 0.75);
+  padding-left: 8px;
+}
+
+/* ── Questions tab: filter pills ── */
+.pattern-view__filters {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.pattern-view__filter-btn {
+  padding: 4px 12px;
+  font-size: 11.5px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background var(--transition-fast),
+              color var(--transition-fast),
+              border-color var(--transition-fast);
+}
+
+/* "All" active state */
+.pattern-view__filter-btn--active[data-diff="all"] {
+  background: var(--bg-hover-strong);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.20);
+}
+
+/* Easy active */
+.pattern-view__filter-btn--active[data-diff="easy"] {
+  background: var(--color-easy-bg);
+  color: var(--color-easy);
+  border-color: var(--color-easy);
+}
+
+/* Medium active */
+.pattern-view__filter-btn--active[data-diff="medium"] {
+  background: var(--color-medium-bg);
+  color: var(--color-medium);
+  border-color: var(--color-medium);
+}
+
+/* Hard active */
+.pattern-view__filter-btn--active[data-diff="hard"] {
+  background: var(--color-hard-bg);
+  color: var(--color-hard);
+  border-color: var(--color-hard);
+}
+
+/* ── Questions list ── */
+.pattern-view__questions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

@@ -1,0 +1,77 @@
+/* ── CodeBlock ───────────────────────────────────────────────── */
+
+.code-block {
+  margin-top: 10px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+}
+
+/* ── Header bar ── */
+.code-block__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 14px;
+  background: var(--bg-overlay-dark);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Traffic-light cluster */
+.code-block__lights {
+  display: flex;
+  gap: 6px;
+}
+
+.code-block__light {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+/* Language label */
+.code-block__lang {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+/* Copy button */
+.code-block__copy {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 11px;
+  color: var(--text-muted);
+  padding: 2px 8px;
+  border-radius: 4px;
+  transition: color var(--transition-fast);
+}
+
+.code-block__copy:hover {
+  color: var(--text-primary);
+}
+
+/* Green confirmation state */
+.code-block__copy--done {
+  color: var(--color-easy) !important;
+}
+
+/* ── Pre / code area ── */
+.code-block__pre {
+  margin: 0;
+  padding: 16px 18px;
+  background: var(--bg-overlay);
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  line-height: 1.65;
+  color: #e2e8f0;
+
+  /* Scroll within the box rather than expanding the parent */
+  overflow: auto;
+  max-height: 340px;
+
+  /* Preserve whitespace exactly as written */
+  white-space: pre;
+}

@@ -1,0 +1,26 @@
+/* ── WindowContent ───────────────────────────────────────────── */
+
+/* Two-column flex layout that fills the window body */
+.window-content {
+  display: flex;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Right panel — fills remaining space after the sidebar */
+.window-content__main {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Shown when no pattern matches the sidebar search */
+.window-content__empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 14px;
+  color: var(--text-muted);
+}

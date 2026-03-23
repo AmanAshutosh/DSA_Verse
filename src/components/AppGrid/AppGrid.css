@@ -1,0 +1,27 @@
+/* ── AppGrid ─────────────────────────────────────────────────── */
+
+/* Full-screen transparent overlay — centres the grid, doesn't block clicks */
+.app-grid__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-desktop);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Clear the menu bar at top and dock at bottom */
+  padding-top: 44px;
+  padding-bottom: 100px;
+
+  /* No background — wallpaper shows through */
+  pointer-events: none; /* Overlay itself doesn't catch clicks... */
+}
+
+/* 4-column icon grid */
+.app-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px 32px;
+  pointer-events: all; /* ...but the icons do */
+}
