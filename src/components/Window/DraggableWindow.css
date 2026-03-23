@@ -87,3 +87,9 @@
   flex: 1;
   overflow: hidden;
 }
+
+@media (max-width: 768px) {
+  .draggable-window {
+    border-radius: 0;
+  }
+}

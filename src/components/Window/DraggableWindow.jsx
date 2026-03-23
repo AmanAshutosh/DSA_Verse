@@ -93,11 +93,14 @@ const handleMouseUp = () => {
     <div
       className={`draggable-window ${isActive ? "draggable-window--active" : ""}`}
       style={{
-        left: pos.x,
-        top: pos.y,
-        width: win.w,
-        height: win.h,
-        /* Active windows sit above inactive ones */
+        position: "fixed", // 🔥 VERY IMPORTANT
+
+        left: isMobile ? 0 : pos.x,
+        top: isMobile ? 0 : pos.y,
+
+        width: isMobile ? "100vw" : win.w,
+        height: isMobile ? "100vh" : win.h,
+
         zIndex: isActive ? "var(--z-window-active)" : "var(--z-window)",
       }}
       onMouseDown={onFocus} /* Clicking anywhere focuses the window */
