@@ -33,7 +33,7 @@
   /* Sidebar becomes top section */
   .sidebar {
     width: 100%;
-    height: 180px;
+    height: 140px;
     overflow-y: auto;
   }
 

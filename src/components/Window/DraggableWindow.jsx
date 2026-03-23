@@ -50,11 +50,11 @@ export default function DraggableWindow({
 
   /* ── Mouse handlers ── */
   /** Cleans up listeners when the mouse button is released */
-const handleMouseUp = () => {
-  dragRef.current.dragging = false;
-  document.removeEventListener("mousemove", handleMouseMove);
-  document.removeEventListener("mouseup", handleMouseUp);
-};
+  const handleMouseUp = () => {
+    dragRef.current.dragging = false;
+    document.removeEventListener("mousemove", handleMouseMove);
+    document.removeEventListener("mouseup", handleMouseUp);
+  };
 
   /** Called when the user clicks the title bar to start dragging */
   const handleTitleMouseDown = (e) => {
@@ -96,10 +96,10 @@ const handleMouseUp = () => {
         position: "fixed", // 🔥 VERY IMPORTANT
 
         left: isMobile ? 0 : pos.x,
-        top: isMobile ? 0 : pos.y,
+        top: isMobile ? "40px" : pos.y,
 
         width: isMobile ? "100vw" : win.w,
-        height: isMobile ? "100vh" : win.h,
+        height: isMobile ? "calc(100vh - 40px)" : win.h,
 
         zIndex: isActive ? "var(--z-window-active)" : "var(--z-window)",
       }}

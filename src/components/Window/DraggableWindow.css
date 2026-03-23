@@ -1,7 +1,7 @@
 /* ── DraggableWindow ─────────────────────────────────────────── */
 
 .draggable-window {
-  position: fixed;            /* Positioned relative to the viewport */
+  position: fixed; /* Positioned relative to the viewport */
   border-radius: var(--radius-lg);
   overflow: hidden;
 
@@ -20,7 +20,9 @@
   flex-direction: column;
 
   /* Smooth transitions when focus changes */
-  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  transition:
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
 
   font-family: var(--font-system);
 }
@@ -28,8 +30,9 @@
 /* Active (front) window gets a stronger shadow and brighter border */
 .draggable-window--active {
   border-color: var(--border-strong);
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.70),
-              0 0 0 0.5px rgba(255, 255, 255, 0.06);
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.7),
+    0 0 0 0.5px rgba(255, 255, 255, 0.06);
 }
 
 /* ── Title bar ── */
@@ -73,23 +76,23 @@
   text-align: center;
   font-size: 13px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.80);
-  pointer-events: none;   /* Title text must not interfere with drag */
+  color: rgba(255, 255, 255, 0.8);
+  pointer-events: none; /* Title text must not interfere with drag */
 }
 
 /* Balances the title so it stays centred when traffic lights are on the left */
 .draggable-window__title-spacer {
-  width: 52px;            /* Same effective width as the traffic lights cluster */
+  width: 52px; /* Same effective width as the traffic lights cluster */
 }
 
 /* ── Window body ── */
 .draggable-window__body {
-  flex: 1;
+  height: 100%;
   overflow: hidden;
 }
 
 @media (max-width: 768px) {
-  .draggable-window {
-    border-radius: 0;
+  .draggable-window__body {
+    overflow: auto;
   }
 }
