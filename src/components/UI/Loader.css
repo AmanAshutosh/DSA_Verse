@@ -1,0 +1,43 @@
+.loader {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top, #0f172a, #020617);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+
+  color: white;
+  z-index: 99999;
+}
+
+/* Logo */
+.loader__logo {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* Progress bar container */
+.loader__bar {
+  width: 220px;
+  height: 6px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+/* Progress fill */
+.loader__fill {
+  height: 100%;
+  background: linear-gradient(90deg, #6366f1, #8b5cf6);
+  transition: width 0.2s ease;
+}
+
+/* Percentage text */
+.loader__text {
+  font-size: 14px;
+  color: rgba(255,255,255,0.6);
+}

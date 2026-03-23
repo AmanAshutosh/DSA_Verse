@@ -1,0 +1,22 @@
+.toast {
+  position: fixed;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  
+  background: rgba(20, 20, 30, 0.95);
+  color: white;
+  padding: 12px 18px;
+  border-radius: 10px;
+  
+  font-size: 14px;
+  backdrop-filter: blur(10px);
+
+  transition: all 0.4s ease;
+  z-index: 99999;
+}
+
+/* 🔥 Slide up animation */
+.toast--show {
+  bottom: 30px;
+}

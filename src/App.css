@@ -28,6 +28,9 @@
 
   z-index: var(--z-desktop);
 }
+.app {
+  padding-bottom: 40px;
+}
 
 @media (max-width: 768px) {
   .app {

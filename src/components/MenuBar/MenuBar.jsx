@@ -13,7 +13,7 @@ import React from "react";
 import "./MenuBar.css";
 
 /** Items that appear in the left-side application menu */
-const MENU_ITEMS = ["DSA Studio", "File", "Edit", "View", "Window", "Help"];
+const MENU_ITEMS = ["DSA Verse", "File", "Edit", "View", "Window", "Help"];
 
 export default function MenuBar({ time }) {
   // Format time as "09:41" (12-hour)

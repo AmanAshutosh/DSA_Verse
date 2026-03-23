@@ -1,0 +1,149 @@
+/* ── Container ── */
+.login {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: radial-gradient(circle at top, #0f172a, #020617);
+}
+.login__content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* ── Card ── */
+.login__card {
+  width: 100%;
+  max-width: 380px;
+  padding: 28px;
+  border-radius: 16px;
+
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 🔥 Hover Pop */
+.login__card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+/* ── Title ── */
+.login__title {
+  font-size: 26px;
+  font-weight: 600;
+  color: white;
+  text-align: center;
+
+  transition: transform 0.3s ease;
+}
+
+/* 🔥 Slight lift on hover */
+.login__card:hover .login__title {
+  transform: translateY(-2px);
+}
+
+.login__subtitle {
+  font-size: 14px;
+  color: rgba(255,255,255,0.6);
+  text-align: center;
+}
+
+/* ── Form ── */
+.login__form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ── Inputs ── */
+.login__form input {
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.1);
+
+  background: rgba(255,255,255,0.05);
+  color: white;
+
+  font-size: 14px;
+  outline: none;
+
+  transition: all 0.25s ease;
+}
+
+/* 🔥 Glow when clicked */
+.login__form input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 2px rgba(99,102,241,0.4);
+  background: rgba(255,255,255,0.08);
+}
+
+.login__form input::placeholder {
+  color: rgba(255,255,255,0.4);
+}
+
+/* ── Button ── */
+.login__form button {
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+/* 🔥 Hover color + lift */
+.login__form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(99,102,241,0.4);
+}
+
+.login__form button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* 🔥 Click press */
+.login__form button:active {
+  transform: scale(0.96);
+}
+
+/* ── Mobile spacing tweak ── */
+@media (max-width: 768px) {
+  .login__card {
+    padding: 22px;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login__card {
+  animation: fadeUp 0.6s ease;
+}
