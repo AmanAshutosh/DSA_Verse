@@ -48,7 +48,13 @@ export default function Dock({ dockTopics, openIds, onOpen }) {
             mouseX !== null ? Math.abs(mouseX - iconCentreX) : 999;
 
           // Scale: 1 at rest, up to 1.5 directly under cursor
-          const scale = mouseX !== null ? Math.max(1, 1.5 - distance / 100) : 1;
+          const isMobile = window.innerWidth <= 768;
+
+         const scale = isMobile
+           ? 1
+           : mouseX !== null
+             ? Math.max(1, 1.5 - distance / 100)
+             : 1;
 
           // Icons lift as they grow — multiply scale factor by a lift coefficient
           const lift = mouseX !== null ? Math.max(0, (scale - 1) * 30) : 0;

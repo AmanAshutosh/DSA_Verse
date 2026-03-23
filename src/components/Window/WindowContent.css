@@ -24,3 +24,22 @@
   font-size: 14px;
   color: var(--text-muted);
 }
+
+@media (max-width: 768px) {
+  .window-content {
+    flex-direction: column;
+  }
+
+  /* Sidebar becomes top section */
+  .sidebar {
+    width: 100%;
+    height: 180px;
+    overflow-y: auto;
+  }
+
+  /* Main content scrolls */
+  .window-content__main {
+    flex: 1;
+    overflow-y: auto;
+  }
+}

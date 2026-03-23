@@ -31,6 +31,7 @@ export default function DraggableWindow({
   onFocus,
   progress,
   onComplete,
+  isMobile,
 }) {
   // Current top-left position of the window
   const [pos, setPos] = useState({ x: win.x, y: win.y });
@@ -43,29 +44,36 @@ export default function DraggableWindow({
     dragging: false,
     originMouseX: 0,
     originMouseY: 0,
-    originWinX:   0,
-    originWinY:   0,
+    originWinX: 0,
+    originWinY: 0,
   });
 
   /* ── Mouse handlers ── */
+  /** Cleans up listeners when the mouse button is released */
+const handleMouseUp = () => {
+  dragRef.current.dragging = false;
+  document.removeEventListener("mousemove", handleMouseMove);
+  document.removeEventListener("mouseup", handleMouseUp);
+};
 
   /** Called when the user clicks the title bar to start dragging */
   const handleTitleMouseDown = (e) => {
+    if (isMobile) return;
     // Don't start drag if they clicked a traffic-light button
     if (e.target.closest(".traffic-lights")) return;
 
     onFocus(); // Bring window to front
 
     dragRef.current = {
-      dragging:     true,
+      dragging: true,
       originMouseX: e.clientX,
       originMouseY: e.clientY,
-      originWinX:   pos.x,
-      originWinY:   pos.y,
+      originWinX: pos.x,
+      originWinY: pos.y,
     };
 
     document.addEventListener("mousemove", handleMouseMove);
-    document.addEventListener("mouseup",   handleMouseUp);
+    document.addEventListener("mouseup", handleMouseUp);
     e.preventDefault(); // Prevent text selection while dragging
   };
 
@@ -74,30 +82,25 @@ export default function DraggableWindow({
     if (!dragRef.current.dragging) return;
 
     setPos({
-      x: dragRef.current.originWinX + (e.clientX - dragRef.current.originMouseX),
-      y: dragRef.current.originWinY + (e.clientY - dragRef.current.originMouseY),
+      x:
+        dragRef.current.originWinX + (e.clientX - dragRef.current.originMouseX),
+      y:
+        dragRef.current.originWinY + (e.clientY - dragRef.current.originMouseY),
     });
   }, []); // No deps — reads from ref, not state
-
-  /** Cleans up listeners when the mouse button is released */
-  const handleMouseUp = useCallback(() => {
-    dragRef.current.dragging = false;
-    document.removeEventListener("mousemove", handleMouseMove);
-    document.removeEventListener("mouseup",   handleMouseUp);
-  }, [handleMouseMove]);
 
   return (
     <div
       className={`draggable-window ${isActive ? "draggable-window--active" : ""}`}
       style={{
-        left:   pos.x,
-        top:    pos.y,
-        width:  win.w,
+        left: pos.x,
+        top: pos.y,
+        width: win.w,
         height: win.h,
         /* Active windows sit above inactive ones */
         zIndex: isActive ? "var(--z-window-active)" : "var(--z-window)",
       }}
-      onMouseDown={onFocus}         /* Clicking anywhere focuses the window */
+      onMouseDown={onFocus} /* Clicking anywhere focuses the window */
     >
       {/* ── Title bar ── */}
       <div
@@ -106,7 +109,11 @@ export default function DraggableWindow({
       >
         {/* Traffic-light buttons */}
         <div className="traffic-lights">
-          <TrafficLight color="#FF5F57" hoverColor="#FF3B30" onClick={onClose} />
+          <TrafficLight
+            color="#FF5F57"
+            hoverColor="#FF3B30"
+            onClick={onClose}
+          />
           <TrafficLight color="#FEBC2E" hoverColor="#FF9F0A" />
           <TrafficLight color="#28C840" hoverColor="#30D158" />
         </div>

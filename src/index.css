@@ -78,7 +78,7 @@
 
 body {
   font-family: var(--font-system);
-  overflow: hidden;          /* Desktop — no page scroll */
+  overflow: auto;          /* Desktop — no page scroll */
   background: #080b14;       /* Fallback if Wallpaper fails */
   -webkit-font-smoothing: antialiased;
 }

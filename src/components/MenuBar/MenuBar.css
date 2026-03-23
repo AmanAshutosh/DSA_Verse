@@ -64,3 +64,9 @@
   font-weight: 500;
   color: rgba(255, 255, 255, 0.95);
 }
+
+@media (max-width: 768px) {
+  .menubar__left span:not(.menubar__apple) {
+    display: none;
+  }
+}

@@ -28,3 +28,13 @@
 
   z-index: var(--z-desktop);
 }
+
+@media (max-width: 768px) {
+  .app {
+    overflow: auto;
+  }
+
+  .app__hint {
+    display: none;
+  }
+}

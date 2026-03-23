@@ -25,3 +25,11 @@
   gap: 28px 32px;
   pointer-events: all; /* ...but the icons do */
 }
+
+@media (max-width: 768px) {
+  .app-grid {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 20px;
+    gap: 20px;
+  }
+}

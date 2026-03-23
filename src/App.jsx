@@ -49,6 +49,8 @@ export default function App() {
   /** Recently-opened topic IDs for the Dock */
   const { recentIds, addRecent } = useRecentTopics();
 
+  const isMobile = window.innerWidth <= 768;
+
   /* ── Derived values ─────────────────────────────────────── */
 
   /** Topic IDs that currently have an open window */
@@ -110,6 +112,7 @@ export default function App() {
             onFocus={() => focusWindow(win.id)}
             progress={progress}
             onComplete={markComplete}
+            isMobile={isMobile}
           />
         );
       })}
