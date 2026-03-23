@@ -18,24 +18,20 @@ import Footer from "./components/UI/Footer";
 import "./App.css";
 
 export default function App() {
-  /* ── Login ──────────────────────────────────────────────── */
   const [user, setUser] = React.useState(() => {
     const saved = localStorage.getItem("dsa-user");
     return saved ? JSON.parse(saved) : null;
   });
 
-  /* ── Loader ─────────────────────────────────────────────── */
   const [appLoading, setAppLoading] = React.useState(true);
 
   React.useEffect(() => {
     const timer = setTimeout(() => {
       setAppLoading(false);
-    }, 800); // smoother UX
-
+    }, 800);
     return () => clearTimeout(timer);
   }, []);
 
-  /* ── Hooks ──────────────────────────────────────────────── */
   const time = useClock();
   const { progress, markComplete } = useProgress();
   const { windows, activeWindowId, openWindow, closeWindow, focusWindow } =
@@ -44,7 +40,6 @@ export default function App() {
 
   const isMobile = window.innerWidth <= 768;
 
-  /* ── Derived values ─────────────────────────────────────── */
   const openTopicIds = windows.map((w) => w.topicId);
 
   const dockTopics = recentIds.length
@@ -54,29 +49,21 @@ export default function App() {
         .slice(0, DOCK_MAX_ITEMS)
     : DSA_DATA.slice(0, DOCK_MAX_ITEMS);
 
-  /* ── Actions ────────────────────────────────────────────── */
   const handleOpenTopic = (topicId) => {
     openWindow(topicId);
     addRecent(topicId);
   };
 
-  /* ── RENDER FLOW (IMPORTANT ORDER) ─────────────────────── */
+  // Loader
+  if (appLoading) return <Loader />;
 
-  // 1️⃣ Loader first
-  if (appLoading) {
-    return <Loader />;
-  }
+  // Login
+  if (!user) return <Login onLogin={setUser} />;
 
-  // 2️⃣ Login next
-  if (!user) {
-    return <Login onLogin={setUser} />;
-  }
-
-  // 3️⃣ Main app
+  // Main App
   return (
     <div className="app">
       <Wallpaper />
-
       <MenuBar time={time} />
 
       <AppGrid
@@ -110,14 +97,16 @@ export default function App() {
         openIds={openTopicIds}
         onOpen={handleOpenTopic}
       />
-      
-      <Footer />
 
+      {/* 🔥 FIXED SECTION */}
       {windows.length === 0 && (
-        <p className="app__hint">
-          Click any topic to open · Drag windows to rearrange · Mark patterns
-          complete to track progress
-        </p>
+        <div className="app__bottom">
+          <p className="app__hint">
+            Click any topic to open · Drag windows to rearrange · Mark patterns
+            complete to track progress
+          </p>
+          <Footer /> {/* ✅ EXACTLY BELOW HINT */}
+        </div>
       )}
     </div>
   );
